@@ -134,6 +134,12 @@ table {
 
 :root {
     font-family: "Nunito", sans-serif;
-    background-color: #0f0f0f;
-    color: #f7f7f7;
+    background-color: #0a0a0a;
+    color: #fafafa;
+}
+
+@layer components {
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
 }
