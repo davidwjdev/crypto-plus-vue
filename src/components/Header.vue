@@ -4,8 +4,8 @@
 </script>
 
 <template>
-    <div>
-        <h1 class="font-[1000] text-4xl">Crypto +</h1>
+    <div class="mx-5">
+        <h1 class="font-[900] text-4xl md:text-center">Crypto +</h1>
     </div>
 </template>
 
