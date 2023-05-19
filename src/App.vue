@@ -5,9 +5,9 @@ import NavVue from './components/Nav.vue';
 </script>
 
 <template>
-  <div class="mt-10 flex flex-col">
+  <div class=" flex flex-col">
 
-    <header class="mb-10">
+    <header class="py-10">
       <HeaderVue />
     </header>
     <nav>

@@ -7,19 +7,19 @@
         </form>
     </div>
     <div class="flex justify-center items-center sm:overflow-x-auto sm:no-scrollbar mb-5">
-        <ul class="flex sm:ms-16">
+        <ul class="flex">
             <li class="me-3">
-                <button href="#" class="bg-blue-500 border-2 border-blue-500 p-3 rounded-full font-bold">
+                <button href="#" class="bg-violet-800 border-2 border-violet-800 sm:p-2 md:p-3 rounded-full font-bold">
                     Cotação
                 </button>
             </li>
             <li class="me-3">
-                <button href="#" class="border-2 border-blue-500 p-3 rounded-full font-bold">
+                <button href="#" class="border-2 border-violet-800 sm:p-2 md:p-3 rounded-full font-bold">
                     Simulador
                 </button>
             </li>
-            <li class="me-3">
-                <button href="#" class="border-2 border-blue-500 p-3 rounded-full font-bold">
+            <li class="">
+                <button href="#" class="border-2 border-violet-800 sm:p-2 md:p-3 rounded-full font-bold">
                     Comparação
                 </button>
             </li>
@@ -29,7 +29,8 @@
         <ul class="flex justify-between">
             <li class="me-3">
                 <form action="">
-                    <select name="moeda" id="moeda" class="p-2 rounded-full bg-blue-500 border-2 border-blue-500">
+                    <select name="moeda" id="moeda"
+                        class="sm:p-1 md:p-2 rounded-full bg-violet-800 border-2 border-violet-800">
                         <option value="real">Real</option>
                         <option value="dolar">Dolar</option>
                         <option value="btn">Bitcoin</option>
@@ -39,10 +40,10 @@
             </li>
 
             <li class="">
-                <button href="#" class="bg-blue-500 border-2 border-blue-500 p-3 rounded-s-full font-bold">
+                <button href="#" class="bg-violet-800 border-2 border-violet-800 sm:p-2 md:p-3 rounded-s-full font-bold">
                     A
                 </button>
-                <button href="#" class="border-2 border-blue-500 p-3 rounded-e-full font-bold">
+                <button href="#" class="border-2 border-violet-800 sm:p-2 md:p-3 rounded-e-full font-bold">
                     B
                 </button>
             </li>
