@@ -1,13 +1,30 @@
 <script setup lang="ts">
+
 import HeaderVue from './components/Header.vue';
 import HomeVue from './components/Home.vue';
 import NavVue from './components/Nav.vue';
+import SearchVue from './components/Search.vue';
+
+
+
+</script>
+
+
+<script lang="ts">
+
+
+
+
 </script>
 
 <template>
+  <div>
+    <SearchVue />
+
+  </div>
   <div class=" flex flex-col">
 
-    <header class="py-10">
+    <header class="py-5">
       <HeaderVue />
     </header>
     <nav>
