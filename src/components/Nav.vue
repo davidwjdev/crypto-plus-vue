@@ -35,11 +35,10 @@
             </li>
 
             <li class="">
-                <button href="#" class="bg-violet-800 border-2 border-violet-800 sm:p-2 md:p-3 rounded-s-full font-bold">
-                    A
-                </button>
-                <button href="#" class="border-2 border-violet-800 sm:p-2 md:p-3 rounded-e-full font-bold">
-                    B
+                <button href="#" class="border-2 border-violet-800 sm:p-2 md:p-3 rounded-s-full font-bold">
+                    <font-awesome-icon :icon="['fas', 'bars']" /> </button>
+                <button href="#" class="bg-violet-800 border-2 border-violet-800 sm:p-2 md:p-3 rounded-e-full font-bold">
+                    <font-awesome-icon :icon="['fas', 'grip']" />
                 </button>
             </li>
         </ul>
