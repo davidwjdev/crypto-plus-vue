@@ -24,7 +24,7 @@ import SearchVue from './components/Search.vue';
   </div>
   <div class=" flex flex-col">
 
-    <header class="py-5">
+    <header class="">
       <HeaderVue />
     </header>
     <nav>

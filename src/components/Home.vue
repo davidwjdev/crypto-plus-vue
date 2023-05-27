@@ -4,27 +4,70 @@ import axios from 'axios';
 export default {
     data() {
         return {
-            isChecked: false,
             tsym: 'BRL',
             API: `https://min-api.cryptocompare.com/data/top/totalvolfull?limit=15&tsym=BRL`,
             API_KEY: '4100f7b060ae6b7a923c40807fbf3a44bbc6ffbd45eceee8fcbc2c735dfb5e3a',
             API_IMG: 'https://www.cryptocompare.com',
             coins: [],
+            favorite: []
         }
     },
     mounted() {
         axios.get(`${this.API}&api_key=${this.API_KEY}`).then((res: any) => {
-            let data = res.data.Data;
-            console.log(data)
-            this.coins = data;
+            this.getFavorites();
+            this.coins = res.data.Data.map((item: any) => {
+                return {
+                    id: item['CoinInfo']['Id'],
+                    imageUrl: 'https://www.cryptocompare.com' + item['CoinInfo']['ImageUrl'],
+                    name: item['CoinInfo']['Name'],
+                    fullName: item['CoinInfo']['FullName'],
+                    price:
+                        (item['DISPLAY'][this.tsym]['PRICE']).replace(/\.(\d$)/, ".$10")
+                    , toSymbol: item['DISPLAY'][this.tsym]['TOSYMBOL'],
+                    isChecked: this.favorite.some((coin: any) => (item['CoinInfo']['Id'] === coin.id))
+                }
+                // isChecked: this.favorite.find((coin: any) => (item['CoinInfo']['Id'] === coin.id)).length > 0
 
-        })
+            });
+        });
+
+    },
+    methods: {
+        addFavorite(coin: any) {
+            this.favorite = this.getFavorites();
+            console.log(this.favorite)
+            const found = this.favorite.some((element: any) => element.id === coin.id);
+            console.log(found)
+            if (found) {
+                coin.isChecked = false;
+                this.favorite = this.favorite.filter((element: any) => (element.id !== coin.id));
+
+            } else {
+                coin.isChecked = true;
+                this.favorite.push(coin);
+            }
+
+            window.localStorage.clear()
+            window.localStorage.setItem("favorite", JSON.stringify(this.favorite));
+        },
+        getFavorites() {
+            const ls = window.localStorage.getItem('favorite');
+            if (ls !== null) {
+                this.favorite = JSON.parse(ls);
+            }
+            return this.favorite;
+        }
+
+
     }
 }
+
+
+
 </script>
 
 <template>
-    <div class="flex justify-center items-center mb-5">
+    <!-- <div class="flex justify-center items-center mb-5">
         <ul class="flex">
             <li class="me-3">
                 <button href="#" class=" border-2 border-violet-800 sm:p-2 md:p-3 rounded-full font-bold">
@@ -42,22 +85,22 @@ export default {
                 </button>
             </li>
         </ul>
-    </div>
+    </div> -->
     <div class="flex justify-center ">
-        <div class="grid md:grid-cols-3 ">
-            <div class="p-3 m-5 bg-zinc-900 rounded-lg w-48 h-48 flex justify-between" v-for="(coin, index) in  coins "
-                :key="index">
+        <div class=" grid lg:grid-cols-3 md:grid-cols-2 ">
+            <div class="p-3 m-2 md:m-4 bg-zinc-900 rounded-3xl w-[300px] h-48 flex justify-between"
+                v-for="(coin, index) in  coins " :key="index">
 
                 <div class="">
                     <div class="w-10 h-10">
-                        <img :src="API_IMG + coin['CoinInfo']['ImageUrl']" class="" :alt="coin['CoinInfo']['FullName']">
+                        <img :src="coin['imageUrl']" class="" :alt="coin['fullName']">
                     </div>
 
                     <div class="mt-2 flex flex-col
 
                     ">
-                        <span class="font-black font uppercase text-2xl ">{{ coin['CoinInfo']['Name'] }}</span>
-                        <span class="text-sm uppercase ">{{ coin['CoinInfo']['FullName'] }}</span>
+                        <span class="font-black font uppercase text-2xl ">{{ coin['name'] }}</span>
+                        <span class="text-sm uppercase ">{{ coin['fullName'] }}</span>
                     </div>
 
 
@@ -66,7 +109,9 @@ export default {
                             Preço:
                         </span>
                         <span class="text-[0.8em]">
-                            {{ ((coin['DISPLAY'][tsym]['PRICE']) as number) }}
+                            {{ ((coin['price']) as Number) }}
+
+
                         </span>
                     </div>
                 </div>
@@ -74,11 +119,11 @@ export default {
 
 
                 <div class="mb-2">
-                    <input type="checkbox" v-model="isChecked" class="hidden" />
-                    <label for="checkbox" class="cursor-pointer">
-                        <font-awesome-icon :icon="isChecked ? ['fas', 'star'] : ['fas', 'star']"
-                            :class="{ 'text-yellow-500': isChecked, 'text-black': !isChecked }" class="fa-xl" />
-                    </label>
+                    <button @click="addFavorite(coin)">
+                        <font-awesome-icon :icon="coin['isChecked'] ? ['fas', 'star'] : ['fas', 'star']"
+                            :class="{ 'text-yellow-500': coin['isChecked'], 'text-black': !coin['isChecked'] }"
+                            class="fa-xl" />
+                    </button>
                 </div>
 
 

@@ -11,9 +11,9 @@ export default {
 
 </script>
 <template>
-    <div class="absolute h-full w-full backdrop-blur-sm  flex justify-center items-center" v-if="$store.state.showModal">
+    <div class="absolute h-full w-full backdrop-blur-sm  flex justify-center pt-10" v-if="$store.state.showModal">
 
-        <div class="border border-1 border-white  bg-zinc-950 p-4 rounded-lg md:w-2/3 md:h-2/3 sm:h-60 md:max-w-lg">
+        <div class="border border-1 border-white  bg-zinc-950 p-4 rounded-lg md:w-2/3 md:h-2/3 sm:max-h-96 md:max-w-lg">
             <div class=" flex justify-end">
                 <button class="bg-purple-800 rounded-full px-2 py-1 roun" @click="toggleModal">
                     <font-awesome-icon :icon="['fas', 'xmark']" />

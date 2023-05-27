@@ -12,7 +12,7 @@ export default {
 </script>
 
 <template>
-    <div class="flex sm:flex-col md:flex-row md:justify-between md:mx-10 ">
+    <div class="flex sm:flex-col md:flex-row md:justify-between md:mx-10 my-5 ">
         <div class="sm:mb-5">
             <h1 class="font-[900] text-4xl text-center">Crypto +</h1>
         </div>

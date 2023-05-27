@@ -6,7 +6,6 @@ import App from "./App.vue";
 import store from "./store.d";
 import axios from "axios";
 import vueAxios from "vue-axios";
-
 import {
     faStar,
     faMagnifyingGlass,

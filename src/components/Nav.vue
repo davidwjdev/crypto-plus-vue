@@ -20,8 +20,8 @@
             </li>
         </ul>
     </div>
-    <div class="mb-5 px-5">
-        <ul class="flex justify-between">
+    <div class="flex justify-center items-center mb-5">
+        <ul class="flex">
             <li class="me-3">
                 <form action="">
                     <select name="moeda" id="moeda"
@@ -33,14 +33,28 @@
                 </form>
 
             </li>
-
+            <li class="me-3">
+                <button href="#" class=" border-2 border-violet-800 sm:p-2 md:p-3 rounded-full font-bold">
+                    <FontAwesomeIcon :icon="['fas', 'star']" />
+                </button>
+            </li>
+            <li class="me-3">
+                <button href="#" class="bg-violet-800 border-2 border-violet-800 sm:p-2 md:p-3 rounded-full font-bold">
+                    Em alta
+                </button>
+            </li>
             <li class="">
+                <button href="#" class="border-2 border-violet-800 sm:p-2 md:p-3 rounded-full font-bold">
+                    Novas
+                </button>
+            </li>
+            <!-- <li class="">
                 <button href="#" class="border-2 border-violet-800 sm:p-2 md:p-3 rounded-s-full font-bold">
                     <font-awesome-icon :icon="['fas', 'bars']" /> </button>
                 <button href="#" class="bg-violet-800 border-2 border-violet-800 sm:p-2 md:p-3 rounded-e-full font-bold">
                     <font-awesome-icon :icon="['fas', 'grip']" />
                 </button>
-            </li>
+            </li> -->
         </ul>
     </div>
 </template>
