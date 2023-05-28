@@ -3,9 +3,9 @@ import "./style.css";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import App from "./App.vue";
-import store from "./store.d";
-import axios from "axios";
-import vueAxios from "vue-axios";
+import store from "./store";
+import router from "./router";
+
 import {
     faStar,
     faMagnifyingGlass,
@@ -17,6 +17,7 @@ library.add(faStar, faMagnifyingGlass, faXmark, faBars, faGrip);
 
 const app = createApp(App);
 
-app.use(store, vueAxios, axios);
+app.use(store);
+app.use(router);
 app.component("FontAwesomeIcon", FontAwesomeIcon);
 app.mount("#app");
