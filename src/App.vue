@@ -1,19 +1,18 @@
-<script lang="ts">
+<script setup lang="ts">
 import HeaderVue from "./views/Header.vue";
 import SearchVue from "./views/Search.vue";
-import { RouterLink, RouterView } from "vue-router";
 
+
+</script>
+<script lang="ts">
 export default {
-  name: "App",
   components: {
     SearchVue,
     HeaderVue,
-    RouterLink,
-    RouterView
+
   }
 };
 </script>
-
 <template>
   <div class="flex flex-col">
     <header class="">

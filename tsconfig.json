@@ -1,6 +1,5 @@
 {
     "compilerOptions": {
-        "types": ["vuex"],
         "target": "ES2020",
         "useDefineForClassFields": true,
         "module": "ESNext",

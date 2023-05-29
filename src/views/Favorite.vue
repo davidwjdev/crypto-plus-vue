@@ -1,8 +1,4 @@
-<script lang="ts">
-export default {
-    name: "FavoriteVue"
-
-}
+<script setup lang="ts">
 </script>
 <template>
     <div>
