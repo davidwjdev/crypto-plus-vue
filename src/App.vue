@@ -20,11 +20,6 @@ const toggleButton = (buttonId: number) => {
 const favoriteStore = useFavoriteStore();
 const emAltaStore = useEmAltaStore();
 
-const handleSelectChange = (event: any) => {
-  const tsym = event.target.value;
-  emAltaStore.handleSelectChange(tsym);
-};
-
 
 const fetchData = () => {
   emAltaStore.fetchData();
@@ -72,16 +67,6 @@ export default {
       </div>
       <div class="flex justify-center items-center mb-5">
         <ul class="flex">
-          <li class="me-3">
-            <form action="">
-              <select name="moeda" id="moeda" class="sm:p-1 md:p-2 rounded-full bg-purple-800 border-2 border-purple-800"
-                @change="handleSelectChange">
-                <option value="BRL">Real</option>
-                <option value="USD">Dolar</option>
-                <option value="BTC">Bitcoin</option>
-              </select>
-            </form>
-          </li>
           <li class="me-3">
             <router-link to="/favorite">
               <button :key="buttons[0].id" @click="toggleButton(buttons[0].id)"

@@ -22,13 +22,14 @@ favoriteStore.getFavorites();
             <div class="p-3 m-2 md:m-4 bg-zinc-900 rounded-3xl w-[300px] h-48 flex justify-between"
                 v-for="(coin, index) in emAltaStore.coins" :key="index">
                 <div class="">
-                    <div class="w-10 h-10">
-                        <img :src="coin['imageUrl']" class="" :alt="coin['fullName']" />
+                    <div class=" mb-5 flex items-start">
+                        <img :src="coin['thumb']" class="rounded-full w-15 h-15" :alt="coin['name']" />
                     </div>
 
                     <div class="mt-2 flex flex-col">
+                        <span class="text-2xl text-purple-600 font-black">{{ '#' + (coin['score'] + 1) }}</span>
                         <span class="font-black font uppercase text-2xl">{{
-                            coin["name"]
+                            coin["symbol"]
                         }}</span>
                         <span class="text-sm uppercase">{{
                             coin["fullName"]
@@ -38,7 +39,7 @@ favoriteStore.getFavorites();
                     <div class="mt-2 flex flex-row items-end">
                         <span class="font-bold text-md me-1"> Preço: </span>
                         <span class="text-[0.8em]">
-                            {{ coin["price"] as Number }}
+                            {{ parseFloat(coin["price_btc"]) }}
                         </span>
                     </div>
                 </div>

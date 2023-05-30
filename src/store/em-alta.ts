@@ -5,9 +5,7 @@ import axios from "axios";
 
 export const useEmAltaStore = defineStore("emAltaStore", {
     state: () => ({
-        tsym: "BRL",
-        API_IMG: "https://www.cryptocompare.com",
-        API: `https://min-api.cryptocompare.com/data/top/totaltoptiervolfull`,
+        API: `https://api.coingecko.com/api/v3/search/trending`,
         coins: []
     }),
     actions: {
@@ -15,28 +13,20 @@ export const useEmAltaStore = defineStore("emAltaStore", {
             try {
                 const favoriteStore = useFavoriteStore();
                 const response = await axios
-                    .get(
-                        `${this.API}?limit=15&tsym=${this.tsym}&api_key=${
-                            import.meta.env.VITE_API_KEY
-                        }`
-                    )
+                    .get(`${this.API}`)
                     .then((res: any) => {
-                        return res.data.Data.map((item: any) => {
+                        return res.data.coins.map((crypto: any) => {
                             const coin: any = {
-                                id: item["CoinInfo"]["Id"],
-                                imageUrl:
-                                    this.API_IMG + item["CoinInfo"]["ImageUrl"],
-                                name: item["CoinInfo"]["Name"],
-                                fullName: item["CoinInfo"]["FullName"],
-                                price: item["DISPLAY"][this.tsym][
-                                    "PRICE"
-                                ].replace(/\.(\d$)/, ".$10"),
-                                toSymbol:
-                                    item["DISPLAY"][this.tsym]["TOSYMBOL"],
+                                id: crypto.item.coin_id,
+                                thumb: crypto.item.small,
+                                name: crypto.item.name,
+                                symbol: crypto.item.symbol,
+                                price_btc: crypto.item.price_btc,
+                                score: crypto.item.score,
                                 isChecked:
                                     favoriteStore.favorite.some(
                                         (coin: any) =>
-                                            coin.id === item["CoinInfo"]["Id"]
+                                            coin.id === crypto.item.coin_id
                                     ) ?? false
                             };
                             return coin;
@@ -50,10 +40,6 @@ export const useEmAltaStore = defineStore("emAltaStore", {
         updateData(data: any) {
             // Atualize o state com os dados recebidos
             this.coins = data;
-        },
-        handleSelectChange(tsym: string) {
-            this.tsym = tsym;
-            this.fetchData();
         }
     }
 });
