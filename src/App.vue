@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useEmAltaStore } from "./store/em-alta";
+import { useFavoriteStore } from "./store/favorite";
 import HeaderVue from "./views/Header.vue";
 import SearchVue from "./views/Search.vue";
 import { ref } from 'vue';
@@ -15,13 +17,27 @@ const toggleButton = (buttonId: number) => {
   })
 }
 
+const favoriteStore = useFavoriteStore();
+const emAltaStore = useEmAltaStore();
+
+const handleSelectChange = (event: any) => {
+  const tsym = event.target.value;
+  emAltaStore.handleSelectChange(tsym);
+};
+
+
+const fetchData = () => {
+  emAltaStore.fetchData();
+}
+
+fetchData();
+favoriteStore.getFavorites();
 </script>
 <script lang="ts">
 export default {
   components: {
     SearchVue,
     HeaderVue,
-
   }
 };
 </script>
@@ -58,10 +74,11 @@ export default {
         <ul class="flex">
           <li class="me-3">
             <form action="">
-              <select name="moeda" id="moeda" class="sm:p-1 md:p-2 rounded-full bg-purple-800 border-2 border-purple-800">
-                <option value="real">Real</option>
-                <option value="dolar">Dolar</option>
-                <option value="btn">Bitcoin</option>
+              <select name="moeda" id="moeda" class="sm:p-1 md:p-2 rounded-full bg-purple-800 border-2 border-purple-800"
+                @change="handleSelectChange">
+                <option value="BRL">Real</option>
+                <option value="USD">Dolar</option>
+                <option value="BTC">Bitcoin</option>
               </select>
             </form>
           </li>
@@ -75,20 +92,13 @@ export default {
             </router-link>
           </li>
           <li class="me-3">
-            <router-link to="/">
+            <router-link to="/em-alta">
               <button :key="buttons[1].id" @click="toggleButton(buttons[1].id)"
                 class=" border-2 border-purple-950 sm:p-2 md:p-3 rounded-full font-bold hover:shadow-md hover:shadow-purple-950"
                 :class="{ 'bg-purple-800': buttons[1].isActive }">
                 Em alta
               </button>
             </router-link>
-          </li>
-          <li class="">
-            <button :key="buttons[2].id" @click="toggleButton(buttons[2].id)"
-              class="border-2 border-purple-950 sm:p-2 md:p-3 rounded-full font-bold hover:shadow-md hover:shadow-purple-950"
-              :class="{ 'bg-purple-800': buttons[2].isActive }">
-              Novas
-            </button>
           </li>
         </ul>
       </div>

@@ -5,6 +5,10 @@ import FavoriteVue from "../views/Favorite.vue";
 const routes = [
     {
         path: "/",
+        redirect: "/em-alta"
+    },
+    {
+        path: "/em-alta",
         component: EmAltaVue
     },
     {

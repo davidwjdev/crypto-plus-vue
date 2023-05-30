@@ -15,11 +15,9 @@ export const useFavoriteStore = defineStore("favoriteStore", {
     actions: {
         addFavorite(coin: any) {
             this.favorite = this.getFavorites();
-            console.log(this.favorite);
             const found = this.favorite.some(
                 (element: any) => element.id === coin.id
             );
-            console.log(found);
             if (found) {
                 coin.isChecked = false;
                 this.favorite = this.favorite.filter(

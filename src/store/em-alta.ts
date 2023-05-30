@@ -7,8 +7,7 @@ export const useEmAltaStore = defineStore("emAltaStore", {
     state: () => ({
         tsym: "BRL",
         API_IMG: "https://www.cryptocompare.com",
-
-        API: `https://min-api.cryptocompare.com/data/top/totalvolfull?limit=15&tsym=BRL`,
+        API: `https://min-api.cryptocompare.com/data/top/totaltoptiervolfull`,
         coins: []
     }),
     actions: {
@@ -16,7 +15,11 @@ export const useEmAltaStore = defineStore("emAltaStore", {
             try {
                 const favoriteStore = useFavoriteStore();
                 const response = await axios
-                    .get(`${this.API}&api_key=${import.meta.env.VITE_API_KEY}`)
+                    .get(
+                        `${this.API}?limit=15&tsym=${this.tsym}&api_key=${
+                            import.meta.env.VITE_API_KEY
+                        }`
+                    )
                     .then((res: any) => {
                         return res.data.Data.map((item: any) => {
                             const coin: any = {
@@ -47,6 +50,10 @@ export const useEmAltaStore = defineStore("emAltaStore", {
         updateData(data: any) {
             // Atualize o state com os dados recebidos
             this.coins = data;
+        },
+        handleSelectChange(tsym: string) {
+            this.tsym = tsym;
+            this.fetchData();
         }
     }
 });

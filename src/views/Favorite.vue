@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { useFavoriteStore } from "../store/favorite";
 const favoriteStore = useFavoriteStore();
-console.log(favoriteStore)
 </script>
 <template>
     <div class="flex justify-center">
