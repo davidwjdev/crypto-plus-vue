@@ -22,8 +22,8 @@ favoriteStore.getFavorites();
             <div class="p-3 m-2 md:m-4 bg-zinc-900 rounded-3xl w-[300px] h-48 flex justify-between"
                 v-for="(coin, index) in emAltaStore.coins" :key="index">
                 <div class="">
-                    <div class=" mb-5 flex items-start">
-                        <img :src="coin['thumb']" class="rounded-full w-15 h-15" :alt="coin['name']" />
+                    <div class=" mb-5 flex items-start max-h-12 max-w-12">
+                        <img :src="coin['thumb']" class="rounded-full max-h-12 max-w-12" :alt="coin['name']" />
                     </div>
 
                     <div class="mt-2 flex flex-col">

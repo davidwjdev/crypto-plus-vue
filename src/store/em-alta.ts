@@ -18,7 +18,7 @@ export const useEmAltaStore = defineStore("emAltaStore", {
                         return res.data.coins.map((crypto: any) => {
                             const coin: any = {
                                 id: crypto.item.coin_id,
-                                thumb: crypto.item.small,
+                                thumb: crypto.item.large,
                                 name: crypto.item.name,
                                 symbol: crypto.item.symbol,
                                 price_btc: crypto.item.price_btc,
