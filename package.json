@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "accounting": "^0.4.1",
     "axios": "^1.4.0",
     "pinia": "^2.1.3",
     "vue": "^3.2.47",
@@ -19,6 +20,7 @@
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "@fortawesome/vue-fontawesome": "^3.0.3",
+    "@types/accounting": "^0.4.2",
     "@vitejs/plugin-vue": "^4.1.0",
     "autoprefixer": "^10.4.14",
     "dotenv": "^16.0.3",

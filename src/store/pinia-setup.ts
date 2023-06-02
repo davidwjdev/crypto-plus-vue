@@ -2,6 +2,7 @@ import { createPinia } from "pinia";
 import { useFavoriteStore } from "./favorite";
 import { useModalStore } from "./modal";
 import { useEmAltaStore } from "./em-alta";
+import { useSearchStore } from "./search";
 
 import { App } from "vue";
 
@@ -24,10 +25,17 @@ const emAltaStore = {
     }
 };
 
+const searchStore = {
+    install: (app: App) => {
+        app.provide("searchStore", useSearchStore());
+    }
+};
+
 export function setupPinia(app: App<Element>) {
     app.use(favoriteStore);
     app.use(modalStore);
     app.use(emAltaStore);
+    app.use(searchStore);
 
     app.use(pinia);
 }

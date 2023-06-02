@@ -143,3 +143,25 @@ table {
         display: none;
     }
 }
+/* Personalização da barra de rolagem */
+::-webkit-scrollbar {
+    width: 6px; /* Largura da barra de rolagem */
+}
+
+::-webkit-scrollbar-track {
+    background-color: #0a0a0a; /* Cor de fundo da área de trilha da barra de rolagem */
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: rgb(
+        107 33 168
+    ); /* Cor do preenchimento da alça (thumb) da barra de rolagem */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    border-radius: 50px;
+    background-color: rgb(
+        147 51 234
+    ); /* Cor do preenchimento da alça (thumb) ao passar o mouse */
+}

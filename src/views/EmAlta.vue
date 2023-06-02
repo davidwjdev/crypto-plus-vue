@@ -19,7 +19,7 @@ favoriteStore.getFavorites();
 <template>
     <div class="flex justify-center">
         <div class="grid lg:grid-cols-3 md:grid-cols-2">
-            <div class="p-3 m-2 md:m-4 bg-zinc-900 rounded-3xl w-[300px] h-48 flex justify-between"
+            <div class="p-5 m-2 md:m-4 bg-zinc-900 rounded-3xl w-[300px] flex justify-between"
                 v-for="(coin, index) in emAltaStore.coins" :key="index">
                 <div class="">
                     <div class=" mb-5 flex items-start max-h-12 max-w-12">
@@ -27,7 +27,6 @@ favoriteStore.getFavorites();
                     </div>
 
                     <div class="mt-2 flex flex-col">
-                        <span class="text-2xl text-purple-600 font-black">{{ '#' + (coin['score'] + 1) }}</span>
                         <span class="font-black font uppercase text-2xl">{{
                             coin["symbol"]
                         }}</span>

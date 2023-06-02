@@ -2,6 +2,7 @@ import { defineStore } from "pinia";
 import { useFavoriteStore } from "./favorite";
 
 import axios from "axios";
+import accounting from "accounting";
 
 export const useEmAltaStore = defineStore("emAltaStore", {
     state: () => ({
@@ -21,7 +22,10 @@ export const useEmAltaStore = defineStore("emAltaStore", {
                                 thumb: crypto.item.large,
                                 name: crypto.item.name,
                                 symbol: crypto.item.symbol,
-                                price_btc: crypto.item.price_btc,
+                                price_btc: accounting.formatNumber(
+                                    parseFloat(crypto.item.price_btc),
+                                    20
+                                ),
                                 score: crypto.item.score,
                                 isChecked:
                                     favoriteStore.favorite.some(
