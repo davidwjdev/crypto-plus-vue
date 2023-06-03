@@ -1,8 +1,9 @@
 import { createPinia } from "pinia";
 import { useFavoriteStore } from "./favorite";
 import { useModalStore } from "./modal";
-import { useEmAltaStore } from "./em-alta";
+import { useTopCoinStore } from "./top-coin";
 import { useSearchStore } from "./search";
+import { useCoinDetailStore } from "./coin-detail";
 
 import { App } from "vue";
 
@@ -19,9 +20,9 @@ const modalStore = {
     }
 };
 
-const emAltaStore = {
+const topCoinStore = {
     install: (app: App) => {
-        app.provide("emAltaStore", useEmAltaStore());
+        app.provide("topCoinStore", useTopCoinStore());
     }
 };
 
@@ -31,11 +32,18 @@ const searchStore = {
     }
 };
 
+const coinDetailStore = {
+    install: (app: App) => {
+        app.provide("coinDetailStore", useCoinDetailStore());
+    }
+};
+
 export function setupPinia(app: App<Element>) {
     app.use(favoriteStore);
     app.use(modalStore);
-    app.use(emAltaStore);
+    app.use(topCoinStore);
     app.use(searchStore);
+    app.use(coinDetailStore);
 
     app.use(pinia);
 }

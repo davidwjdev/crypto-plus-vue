@@ -2,9 +2,8 @@ import { defineStore } from "pinia";
 import { useFavoriteStore } from "./favorite";
 
 import axios from "axios";
-import accounting from "accounting";
 
-export const useEmAltaStore = defineStore("emAltaStore", {
+export const useTopCoinStore = defineStore("topCoinStore", {
     state: () => ({
         API: `https://api.coingecko.com/api/v3/search/trending`,
         coins: []
@@ -18,14 +17,14 @@ export const useEmAltaStore = defineStore("emAltaStore", {
                     .then((res: any) => {
                         return res.data.coins.map((crypto: any) => {
                             const coin: any = {
-                                id: crypto.item.coin_id,
+                                coin_id: crypto.item.coin_id,
+                                id: crypto.item.id,
                                 thumb: crypto.item.large,
                                 name: crypto.item.name,
                                 symbol: crypto.item.symbol,
-                                price_btc: accounting.formatNumber(
-                                    parseFloat(crypto.item.price_btc),
-                                    20
-                                ),
+                                price_btc: Number(
+                                    crypto.item.price_btc
+                                ).toFixed(10),
                                 score: crypto.item.score,
                                 isChecked:
                                     favoriteStore.favorite.some(
@@ -33,6 +32,7 @@ export const useEmAltaStore = defineStore("emAltaStore", {
                                             coin.id === crypto.item.coin_id
                                     ) ?? false
                             };
+
                             return coin;
                         });
                     });

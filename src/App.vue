@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useEmAltaStore } from "./store/em-alta";
+import { useTopCoinStore } from "./store/top-coin";
 import { useFavoriteStore } from "./store/favorite";
 import HeaderVue from "./views/Header.vue";
 import SearchVue from "./views/Search.vue";
@@ -18,11 +18,11 @@ const toggleButton = (buttonId: number) => {
 }
 
 const favoriteStore = useFavoriteStore();
-const emAltaStore = useEmAltaStore();
+const topCoinStore = useTopCoinStore();
 
 
 const fetchData = () => {
-  emAltaStore.fetchData();
+  topCoinStore.fetchData();
 }
 
 fetchData();

@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { useFavoriteStore } from "../store/favorite";
-import { useEmAltaStore } from "../store/em-alta"
+import { useTopCoinStore } from "../store/top-coin"
 
 
 const favoriteStore = useFavoriteStore();
-const emAltaStore = useEmAltaStore();
+const topCoinStore = useTopCoinStore();
 
 const fetchData = () => {
-    emAltaStore.fetchData();
+    topCoinStore.fetchData();
 }
 
 fetchData();
@@ -19,8 +19,9 @@ favoriteStore.getFavorites();
 <template>
     <div class="flex justify-center">
         <div class="grid lg:grid-cols-3 md:grid-cols-2">
-            <div class="p-5 m-2 md:m-4 bg-zinc-900 rounded-3xl w-[300px] flex justify-between"
-                v-for="(coin, index) in emAltaStore.coins" :key="index">
+            <a :href.stop="'/coin/' + coin['id']"
+                class="p-5 m-2 md:m-4 bg-zinc-900 rounded-3xl w-[300px] flex justify-between"
+                v-for="(coin, index) in topCoinStore.coins" :key="index">
                 <div class="">
                     <div class=" mb-5 flex items-start max-h-12 max-w-12">
                         <img :src="coin['thumb']" class="rounded-full max-h-12 max-w-12" :alt="coin['name']" />
@@ -54,7 +55,7 @@ favoriteStore.getFavorites();
     }" class="fa-xl" />
                     </button>
                 </div>
-            </div>
+            </a>
         </div>
     </div>
 </template>

@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
-import EmAltaVue from "../views/EmAlta.vue";
+import TopCoinVue from "../views/TopCoin.vue";
 import FavoriteVue from "../views/Favorite.vue";
+import CoinDetailVue from "../views/CoinDetail.vue";
 
 const routes = [
     {
@@ -9,11 +10,16 @@ const routes = [
     },
     {
         path: "/em-alta",
-        component: EmAltaVue
+        component: TopCoinVue
     },
     {
         path: "/favorite",
         component: FavoriteVue
+    },
+    {
+        path: "/coin/:id",
+        component: CoinDetailVue,
+        props: true
     }
 ];
 
