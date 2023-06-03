@@ -39,7 +39,9 @@ export default {
 <template>
   <div class="flex flex-col">
     <header class="">
-      <SearchVue />
+      <teleport to='body'>
+        <SearchVue />
+      </teleport>
       <HeaderVue />
     </header>
     <nav>

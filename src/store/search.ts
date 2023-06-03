@@ -25,7 +25,6 @@ export const useSearchStore = defineStore("searchStore", {
         updateData(data: any) {
             // Atualize o state com os dados recebidos
             this.searchResult = data;
-            console.log(this.searchResult);
         },
         resetSearch() {
             this.searchResult = [];

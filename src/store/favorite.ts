@@ -1,18 +1,40 @@
+import axios from "axios";
 import { defineStore } from "pinia";
-// interface Coin {
-//     id: string;
-//     imageUrl: string;
-//     name: string;
-//     fullName: string;
-//     price: string;
-//     toSymbol: string;
-//     isChecked: boolean;
-// }
 export const useFavoriteStore = defineStore("favoriteStore", {
     state: () => ({
-        favorite: []
+        favorite: [{}],
+        API: `https://api.coingecko.com/api/v3/coins/`,
+        API_PARAMS: `?localization=false&tickers=false&market_data=false&community_data=false&developer_data=false&sparkline=false`
     }),
     actions: {
+        async fetchData(id: string) {
+            try {
+                // const favoriteStore = useFavoriteStore();
+                const response = await axios
+                    .get(this.API + id)
+                    .then((res: any) => {
+                        console.log(res.data);
+                        // const data: any = {
+                        //     name: res.data.name,
+                        //     categories: res.data.categories,
+                        //     image: res.data.image.large,
+                        //     description: res.data.description,
+                        //     isFullDescription: false,
+                        //     sentimentVotesDownPercentage:
+                        //         res.data.sentiment_votes_down_percentage,
+                        //     sentimentVotesUpPercentage:
+                        //         res.data.sentiment_votes_up_percentage,
+                        //     symbol: res.data.symbol,
+                        //     links: res.data.links,
+                        //     marketData: res.data.market_data
+                        // };
+                        // return data;
+                    });
+                return response;
+            } catch (error) {
+                console.error("Erro ao buscar dados:", error);
+            }
+        },
         addFavorite(coin: any) {
             this.favorite = this.getFavorites();
             const found = this.favorite.some(
@@ -40,6 +62,17 @@ export const useFavoriteStore = defineStore("favoriteStore", {
                 this.favorite = JSON.parse(ls);
             }
             return this.favorite;
+        },
+        checkIsFavorite(idCoin: string) {
+            const favorites = this.getFavorites();
+            const isFavorite = favorites.find((coin: any) => {
+                console.log(idCoin);
+                console.log(coin.name, "*");
+
+                console.log(coin.id === idCoin);
+                return coin.id === idCoin;
+            });
+            return isFavorite;
         }
     }
 });

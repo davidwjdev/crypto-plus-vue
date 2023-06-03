@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { useFavoriteStore } from "../store/favorite";
+// import { useFavoriteStore } from "../store/favorite";
 import { useModalStore } from "../store/modal";
 import { useSearchStore } from "../store/search";
 const modalStore = useModalStore();
 const searchStore = useSearchStore();
-const favoriteStore = useFavoriteStore();
+// const favoriteStore = useFavoriteStore();
 
 let search = "";
 
