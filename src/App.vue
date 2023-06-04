@@ -3,6 +3,8 @@ import { useTopCoinStore } from "./store/top-coin";
 import { useFavoriteStore } from "./store/favorite";
 import HeaderVue from "./views/Header.vue";
 import SearchVue from "./views/Search.vue";
+import FooterVue from "./views/Footer.vue";
+
 import { ref } from 'vue';
 
 const buttons = ref([
@@ -33,6 +35,7 @@ export default {
   components: {
     SearchVue,
     HeaderVue,
+    FooterVue
   }
 };
 </script>
@@ -93,6 +96,9 @@ export default {
     <section>
       <router-view></router-view>
     </section>
+    <footer>
+      <FooterVue />
+    </footer>
   </div>
 </template>
 

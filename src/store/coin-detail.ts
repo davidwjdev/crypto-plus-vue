@@ -52,6 +52,7 @@ export const useCoinDetailStore = defineStore("useCoinDetailStore", {
         updateData(data: any) {
             // Atualize o state com os dados recebidos
             this.coin = data;
+            console.log(data);
         },
         changeFullDescription() {
             this.coin.isFullDescription = !this.coin.isFullDescription;
