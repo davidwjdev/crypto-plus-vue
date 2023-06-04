@@ -4,6 +4,7 @@ import { useFavoriteStore } from "../store/favorite";
 import { useCoinDetailStore } from "../store/coin-detail"
 import { useRoute } from "vue-router";
 import { onBeforeMount } from "vue";
+import ChartVue from "../components/Chart.vue";
 
 
 const favoriteStore = useFavoriteStore();
@@ -36,8 +37,8 @@ favoriteStore.getFavorites();
 </script>
 
 <template>
-    <div class="flex justify-center mt-5">
-        <div class="flex flex-col bg-zinc-900 rounded-lg md:p-10 sm:p-3 sm:w-[250px] md:w-[500px] lg:w-[900px]"
+    <div class="flex justify-center my-5">
+        <div class="flex flex-col bg-zinc-900 rounded-lg md:p-10 sm:p-3 sm:w-[300px] md:w-[700px] lg:w-[900px]"
             v-if="coinDetailStore.coin !== null">
 
             <div class="mb-5 flex justify-end">
@@ -46,18 +47,18 @@ favoriteStore.getFavorites();
                     Add Favorites
                 </button>
             </div>
-            <div class="mb-5 flex md:flex-row sm:flex-col   items-center md:justify-center">
-                <div class="flex flex-col me-5">
+            <div class="mb-3 flex md:flex-row sm:flex-col   items-center md:justify-center">
+                <div class="flex flex-col md:me-5">
                     <div class="mb-3">
-                        <img class="w-32 rounded-full border-8 border-solid border-purple-800"
+                        <img class="lg:w-32 md:w-24 sm:w-20 rounded-full border-8 border-solid border-purple-800"
                             :src="coinDetailStore.coin.image" :alt="coinDetailStore.coin.name">
                     </div>
                     <div class="text-center">
                         <span class="font-black text-2xl uppercase">{{ coinDetailStore.coin.name }}</span>
                     </div>
                 </div>
-                <div class="flex flex-col">
-                    teste
+                <div class="flex flex-col sm:mt-5">
+                    <ChartVue market="" />
                 </div>
             </div>
             <div class="mb-3 text-center ">
